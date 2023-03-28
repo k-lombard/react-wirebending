@@ -55,6 +55,7 @@ function App(this: any) {
       });
       
       canvas.add(line);
+      // setGrammarObjs(Array.from(grammarList));
     });
     
     canvas.on('mouse:move', function(o: any){
@@ -113,10 +114,7 @@ function App(this: any) {
         }
       }
       console.log(grammarList);
-      setGrammarObjs(Array.from(grammarList));
     });
-
-
   })
 
 
@@ -225,6 +223,12 @@ function App(this: any) {
         console.log(Math.abs(cos_theta))
         return Math.abs(cos_theta) > theta_thresh;
       }
+    
+
+  function updateGrammarObjects(e: any) {
+    setGrammarObjs(Array.from(grammarList));
+    console.log(grammarList);
+  }
 
   
   function intersection(from1: Point2D, to1: Point2D, from2: Point2D, to2: Point2D): Point2D | undefined{
@@ -248,7 +252,7 @@ function App(this: any) {
 
   return (
     <NextUIProvider>
-      <Navbar isBordered variant={'floating'}>
+      <Navbar className="w-full" isBordered variant={'sticky'}>
         <Navbar.Brand>
           <Text b color="inherit" hideIn="xs">
             Wirebending Bailey-Derek Grammar Converter
@@ -265,7 +269,8 @@ function App(this: any) {
       </Navbar>
       <div className="flex flex-row">
         <canvas id='my-canvas' onClick={handleClick} onMouseUp={onMouseUp} onMouseMove={onMouseMove} width={800} height={height-76} style={{border: '1px solid #ccc'}}></canvas>
-        <div className="flex flex-col overflow-auto">
+        <div className="flex flex-col w-full overflow-auto">
+          <Button className="w-full" onPress={updateGrammarObjects}>Update Grammar Output</Button>
           {grammarObjs.map(function(element, index){return (<img key={index} height={50} src={require("./assets/grammar-" + element + ".png")}/>);})}
         </div>
       </div>
