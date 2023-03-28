@@ -261,7 +261,7 @@ function App(this: any) {
         <Navbar.Content hideIn="xs">
           <Navbar.Link isActive href="#">Home</Navbar.Link>
           <Navbar.Link href="#">About Wirebending</Navbar.Link>
-          <Navbar.Link href="#">Source Code</Navbar.Link>
+          <Navbar.Link href="https://github.com/k-lombard/react-wirebending">Source Code</Navbar.Link>
         </Navbar.Content>
         <Navbar.Content>
 
